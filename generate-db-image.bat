@@ -1,0 +1,1 @@
+docker run -d --name oxtaskdb_postgres -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=oxtaskdb postgres

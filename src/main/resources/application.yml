@@ -1,0 +1,17 @@
+spring.application.name: ox-task
+
+spring.datasource.url: jdbc:postgresql://localhost:5432/oxtaskdb
+spring.datasource.username: postgres
+spring.datasource.password: mysecretpassword
+
+spring:
+  liquibase:
+    url: jdbc:postgresql://localhost:5432/oxtaskdb
+    driverClassName:  org.postgresql.Driver
+    user: postgres
+    password: mysecretpassword
+    change-log: classpath:/db/changelog/changelog-master.xml
+
+
+poll.max.options: 7
+poll.min.options: 2

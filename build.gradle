@@ -1,0 +1,52 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.2'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.kacper'
+version = '0.0.1-SNAPSHOT'
+
+ext {
+	jodaVersion = '2.13.0'
+	liquibaseVersion = '4.30.0'
+	lombokVersion = '1.18.36'
+	mssqlVersion = '12.8.1.jre11'
+	springBootVersion ='3.4.0'
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly("org.projectlombok:lombok:${lombokVersion}")
+	annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+
+	implementation("org.springframework.boot:spring-boot-starter-data-jdbc:${springBootVersion}")
+	implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+	implementation("org.liquibase:liquibase-core:${liquibaseVersion}")
+	implementation("joda-time:joda-time:${jodaVersion}")
+
+	runtimeOnly("org.postgresql:postgresql")
+
+	testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
