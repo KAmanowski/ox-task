@@ -8,11 +8,13 @@ group = 'com.kacper'
 version = '0.0.1-SNAPSHOT'
 
 ext {
+	caffeineVersion = '3.2.0'
 	jodaVersion = '2.13.0'
 	liquibaseVersion = '4.30.0'
 	lombokVersion = '1.18.36'
 	mssqlVersion = '12.8.1.jre11'
 	springBootVersion ='3.4.0'
+	springdocVersion = '2.3.0'
 }
 
 java {
@@ -41,7 +43,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
 	implementation("org.liquibase:liquibase-core:${liquibaseVersion}")
 	implementation("joda-time:joda-time:${jodaVersion}")
-	implementation("com.github.ben-manes.caffeine:caffeine")
+	implementation("com.github.ben-manes.caffeine:caffeine:${caffeineVersion}")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocVersion}")
 
 	runtimeOnly("org.postgresql:postgresql")
 
