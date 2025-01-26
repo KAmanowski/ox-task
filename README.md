@@ -1,6 +1,6 @@
 # OX-Task
 
-The app runs vai Spring Boot with a Postgres DB.
+The app runs via Spring Boot with a Postgres DB.
 
 To run:
 
