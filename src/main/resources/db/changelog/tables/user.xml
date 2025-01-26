@@ -5,16 +5,22 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="1" author="amanowskik">
-        <comment>Manufacturer info table.</comment>
+        <comment>User info table.</comment>
 
-        <createTable tableName="manufacturer">
-            <column name="name" type="nvarchar(50)">
+        <createTable tableName="user" >
+            <column name="id" type="uuid" defaultValueComputed="gen_random_uuid()">
                 <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="nvarchar(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="hash" type="binary(60)">
+                <constraints nullable="false"/>
             </column>
         </createTable>
 
         <rollback>
-            <dropTable tableName="manufacturer"/>
+            <dropTable tableName="user"/>
         </rollback>
     </changeSet>
 

@@ -8,18 +8,10 @@
         <comment>Add Transaction table to capture user votes.</comment>
 
         <createTable tableName="transaction">
-            <column name="transaction_id" type="uuid">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="manufacturer_id" type="uuid">
-                <constraints nullable="false"/>
-            </column>
-            <column name="retailer_id" type="uuid">
-                <constraints nullable="false"/>
-            </column>
-            <column name="product_code" type="nvarchar(100)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="transaction_id" type="uuid" defaultValueComputed="gen_random_uuid()"/>
+            <column name="manufacturer_id" type="nvarchar(50)"/>
+            <column name="retailer_id" type="nvarchar(50)"/>
+            <column name="product_code" type="nvarchar(100)"/>
             <column name="transaction_date" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
@@ -31,13 +23,20 @@
             </column>
         </createTable>
 
+        <addPrimaryKey tableName="transaction" columnNames="transaction_id,manufacturer_id,retailer_id,product_code"
+                       constraintName="PK_transaction"/>
+
         <addForeignKeyConstraint baseTableName="transaction" baseColumnNames="manufacturer_id"
                                  constraintName="FK_transaction_manufacturer_id"
-                                 referencedTableName="manufacturer" referencedColumnNames="id"/>
+                                 referencedTableName="manufacturer" referencedColumnNames="name"/>
 
         <addForeignKeyConstraint baseTableName="transaction" baseColumnNames="retailer_id"
                                  constraintName="FK_transaction_retailer_id"
-                                 referencedTableName="retailer" referencedColumnNames="id"/>
+                                 referencedTableName="retailer" referencedColumnNames="name"/>
+
+        <createIndex indexName="IDX_transaction_transaction_date" tableName="transaction">
+            <column name="transaction_date"/>
+        </createIndex>
 
         <rollback>
             <dropTable tableName="transaction"/>

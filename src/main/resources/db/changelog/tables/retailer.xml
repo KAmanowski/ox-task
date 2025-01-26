@@ -7,11 +7,10 @@
     <changeSet id="1" author="amanowskik">
         <comment>Retailer info table.</comment>
 
-        <createTable tableName="retailer">
-            <column name="id" type="uuid">
+        <createTable tableName="retailer" >
+            <column name="name" type="nvarchar(50)">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="nvarchar(100)"/>
         </createTable>
 
         <rollback>

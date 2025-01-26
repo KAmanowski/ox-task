@@ -37,14 +37,17 @@ dependencies {
 
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc:${springBootVersion}")
 	implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+	implementation("org.springframework.boot:spring-boot-starter-cache:${springBootVersion}")
+	implementation("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
 	implementation("org.liquibase:liquibase-core:${liquibaseVersion}")
 	implementation("joda-time:joda-time:${jodaVersion}")
+	implementation("com.github.ben-manes.caffeine:caffeine")
 
 	runtimeOnly("org.postgresql:postgresql")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
-	testImplementation 'org.springframework.security:spring-security-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation("org.springframework.security:spring-security-test")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.named('test') {

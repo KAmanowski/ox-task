@@ -6,5 +6,6 @@
     <include file="tables/manufacturer.xml" relativeToChangelogFile="true"/>
     <include file="tables/retailer.xml" relativeToChangelogFile="true"/>
     <include file="tables/transaction.xml" relativeToChangelogFile="true"/>
+    <include file="tables/user.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
