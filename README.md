@@ -18,6 +18,6 @@ Quick rundown of the app:
 - Token auth is done by first generating a user via endpoint, which will return a token. You then provide your username and the generated token to the DELETE endpoint.
 - `TransactionController` has all of the endpoint required for the tech test.
 
-For a full list of endpoints please open up: `Swagger.html`
+For a full list of endpoints please open up: `http://localhost:8080/swagger-ui/index.html#/`
 
 Thank you!
